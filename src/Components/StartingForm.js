@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../Strore/store';
 
-const StartingForm = ({ generateTable }) => {
+const StartingForm = ({ generateTable, loading, loaded }) => {
   const formInitialState = { rowCount: 5, columnCount: 3, nearestCount: 1 };
   const [formState, setFormState] = useState(formInitialState);
 
@@ -27,15 +27,20 @@ const StartingForm = ({ generateTable }) => {
     }));
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (formState.rowCount
+      && formState.columnCount
+      && formState.nearestCount) {
+        loading();
+        generateTable(formState);
+        setTimeout(loaded, 2000);
+      }
+  };
+
   return (
     <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        formState.rowCount &&
-        formState.columnCount &&
-        formState.nearestCount &&
-        generateTable(formState);
-      }}
+      onSubmit={submitHandler}
       className="starting-form"
     >
       <h2>Set number of table <br /> rows and columns</h2>
@@ -82,6 +87,8 @@ const StartingForm = ({ generateTable }) => {
 
 const mapDispatchToProps = dispatch => ({
   generateTable: tableVars => dispatch(Actions.generateTable(tableVars)),
+  loading: () => dispatch(Actions.loading()),
+  loaded: () => dispatch(Actions.loaded()),
 });
 
 export default connect(null, mapDispatchToProps)(StartingForm);

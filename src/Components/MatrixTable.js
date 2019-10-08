@@ -1,8 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import TableHead from './TableHead';
+import TableFooter from './TableFooter';
+import TableBody from './TableBody';
+
 const MatrixTable = ({ nums }) => (
-  nums.map(row => <li>{row[0].value}, {row[0].uuid}</li>)
+  <div className="table-container">
+    <div className="table-wrapper">
+      <table className="table">
+        <TableHead />
+        <TableFooter />
+        <TableBody />
+      </table>
+    </div>
+  </div>
 );
 
 const mapStateToProps = state => ({

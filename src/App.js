@@ -14,7 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>MN Matrix</h1>
-        {!loading && !loaded && <StartingForm />}
+        {!loading && nums.length === 0 && <StartingForm />}
         {loading && <Spinner />}
         {loaded && nums.length > 0 && <MatrixTable />}
       </div>
