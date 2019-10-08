@@ -1,11 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import * as Actions from '../Strore/store';
 import TableRow from './TableRow'
 
-const TableBody = ({ nums }) => (
+const TableBody = ({ nums, addRow }) => (
   <tbody>
-    {nums.map((row, rowIndex) => <TableRow row={row} rowIndex={rowIndex} />)}
+    {nums.map((row, rowIndex) => (
+      <React.Fragment key={rowIndex}>
+        <TableRow row={row} rowIndex={rowIndex} />
+      </React.Fragment>
+    ))}
+    <tr>
+      <td className="table__add-row">
+        <button
+          type="button"
+          className="table__add-btn"
+          onClick={addRow}
+        >
+          Add row
+        </button>
+      </td>
+    </tr>
   </tbody>
 );
 
@@ -14,4 +29,8 @@ const mapStateToProps = state => ({
   nums: state.nums,
 });
 
-export default connect(mapStateToProps, null)(TableBody);
+const mapDispatchToProps = dispatch => ({
+  addRow: () => dispatch(Actions.addRow()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableBody);

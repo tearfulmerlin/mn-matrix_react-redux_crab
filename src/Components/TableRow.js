@@ -9,9 +9,4 @@ const TableRow = ({ row, rowIndex }) => (
   </tr>
 );
 
-
-const mapStateToProps = state => ({
-  nums: state.nums,
-});
-
 export default TableRow;

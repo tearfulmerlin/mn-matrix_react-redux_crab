@@ -6,7 +6,7 @@ const TableHead = ({ nums }) => (
     <tr>
       <th>Row</th>
       {nums[0].map((cell, cellIndex) => (
-        <th>Column {cellIndex + 1}</th>
+        <th key={cellIndex} >Column {cellIndex + 1}</th>
         ))}
         <th>Sum</th>
     </tr>

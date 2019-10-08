@@ -8,8 +8,9 @@ const TableFooter = ({ nums }) => (
     <tr>
       <td>Average</td>
       {nums[0].map((cell, cellIndex) => (
-        <td>{calcAverage(nums, cellIndex)}</td>
+        <td key={cellIndex}>{calcAverage(nums, cellIndex)}</td>
       ))}
+      <td></td>
     </tr>
   </tfoot>
 );

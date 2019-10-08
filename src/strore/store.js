@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 
 import tableGenerator from '../functions/generators/table-generator';
+import rowGenerator from '../functions/generators/row-generator';
 
 const LOADING = 'LOADING';
 const LOADED = 'LOADED';
@@ -17,7 +18,7 @@ export const loading = () => ({ type: LOADING });
 export const loaded = () => ({ type: LOADED });
 
 export const generateTable = tableVars => ({ type: GENERATE_TABLE, tableVars });
-export const addRow = nums => ({ type: ADD_ROW, nums });
+export const addRow = () => ({ type: ADD_ROW });
 export const removeRow = rowIndex => ({ type: REMOVE_ROW, rowIndex });
 export const increase = uuid => ({ type: INCREASE, uuid });
 export const decrease = uuid => ({ type: DECREASE, uuid });
@@ -53,20 +54,43 @@ const reducer = (state, action) => {
     return {
       ...state,
       nearestCount: action.tableVars.nearestCount,
+      rowCount: action.tableVars.rowCount,
+      columnCount: action.tableVars.columnCount,
       nums: tableGenerator(action.tableVars),
     };
 
   case ADD_ROW:
-    return
+    return {
+      ...state,
+      nums: [...state.nums, rowGenerator(state.columnCount)],
+    };
 
   case REMOVE_ROW:
-    return
+    return {
+      ...state,
+      nums: state.nums
+        .filter((row, rowIndex) => rowIndex !== action.rowIndex),
+    };
 
   case INCREASE:
-    return
+    return {
+      ...state,
+      nums: state.nums
+        .map(row => row.map(cell => cell.uuid !== action.uuid
+          ? cell
+          : { ...cell, value: cell.value + 1 }
+        )),
+    };
 
   case DECREASE:
-    return
+    return {
+      ...state,
+      nums: state.nums
+        .map(row => row.map(cell => cell.uuid !== action.uuid
+          ? cell
+          : { ...cell, value: cell.value - 1 }
+        )),
+    };
 
   case SHOW_PERCENTAGE:
     return

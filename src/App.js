@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Styles/App.scss';
 
@@ -30,8 +29,3 @@ const mapStateToPrors = state => ({
 
 export default connect(mapStateToPrors, null)(App);
 
-App.propTypes = {
-  nums: PropTypes.arrayOf(PropTypes.array).isRequired,
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
-}

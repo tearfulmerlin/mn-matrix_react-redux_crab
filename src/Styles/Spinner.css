@@ -1,3 +1,8 @@
+.spinner-header {
+  text-align: center;
+  font-size: 18px;
+}
+
 .scaling-squares-spinner, .scaling-squares-spinner * {
   box-sizing: border-box;
   margin: 0 auto;
