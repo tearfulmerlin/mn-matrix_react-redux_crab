@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Spinner = () => {}
+const Spinner = () => 'spinner';
 
 export default Spinner;

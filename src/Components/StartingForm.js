@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import * as Actions from '../Strore/store';
 
@@ -10,27 +10,37 @@ const StartingForm = ({ generateTable }) => {
     setFormState(prevState => ({
       ...prevState,
       rowCount: target.value,
-    }))
+    }));
   };
 
   const setColumnCount = ({ target }) => {
     setFormState(prevState => ({
       ...prevState,
       columnCount: target.value,
-    }))
+    }));
   };
 
   const setNearestCount = ({ target }) => {
     setFormState(prevState => ({
       ...prevState,
       nearestCount: target.value,
-    }))
+    }));
   };
 
   return (
-    <form onSubmit={() => generateTable(formState)}>
-      <p>Set number of table rows and columns</p>
-      <label>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        formState.rowCount &&
+        formState.columnCount &&
+        formState.nearestCount &&
+        generateTable(formState);
+      }}
+      className="starting-form"
+    >
+      <h2>Set number of table <br /> rows and columns</h2>
+      <label className="starting-form__label">
+        Rows
         <input
           type="number"
           min="1"
@@ -41,7 +51,8 @@ const StartingForm = ({ generateTable }) => {
         />
       </label>
 
-      <label>
+      <label className="starting-form__label">
+        Columns
         <input
           type="number"
           min="1"
@@ -52,12 +63,13 @@ const StartingForm = ({ generateTable }) => {
         />
       </label>
 
-      <label>
+      <label className="starting-form__label">
+        Highlighted cells
         <input
           type="number"
           min="1"
           max="5"
-          placeholder="Highloghted cells"
+          placeholder="Highlighted cells"
           value={formState.nearestCount}
           onChange={setNearestCount}
         />
@@ -65,11 +77,11 @@ const StartingForm = ({ generateTable }) => {
 
       <button type="submit">Generate table</button>
     </form>
-  )
-}
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
-  generateTable: tableVars => dispatch(Actions.setNums(tableVars)),
+  generateTable: tableVars => dispatch(Actions.generateTable(tableVars)),
 });
 
 export default connect(null, mapDispatchToProps)(StartingForm);

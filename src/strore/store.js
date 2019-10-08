@@ -1,13 +1,11 @@
 import { createStore } from 'redux';
-// import { rowGenerator } from '../api/serviceFunctions';
 
-const SET_ROWS = 'SET_ROWS';
-const SET_COLUMNS = 'SET_COLUMNS';
-const SET_NEAREST_COUNT = 'SET_NEAREST_COUNT';
-const START_LOADING = 'START_LOADING';
-const FINISH_LOADING = 'FINISH_LOADING';
+import tableGenerator from '../functions/generators/table-generator';
 
-const SET_NUMS = 'SET_NUMS';
+const LOADING = 'LOADING';
+const LOADED = 'LOADED';
+
+const GENERATE_TABLE = 'GENERATE_TABLE';
 const ADD_ROW = 'ADD_ROW';
 const REMOVE_ROW = 'REMOVE_ROW';
 const INCREASE = 'INCREASE';
@@ -15,13 +13,10 @@ const DECREASE = 'DECREASE';
 const SHOW_PERCENTAGE = 'SHOW_PERCENTAGE';
 const SHOW_NEAREST = 'SHOW_NEAREST';
 
-export const setRowsCount = rowCount => ({ type: SET_ROWS, rowCount });
-export const setColumnCount = columnCount => ({ type: SET_COLUMNS, columnCount });
-export const setNearestCount = nearestCount => ({ type: SET_NEAREST_COUNT, nearestCount });
-export const startLoading = () => ({ type: START_LOADING });
-export const finishLoading = () => ({ type: FINISH_LOADING });
+export const loading = () => ({ type: LOADING });
+export const loaded = () => ({ type: LOADED });
 
-export const setNums = nums => ({ type: SET_NUMS, nums });
+export const generateTable = tableVars => ({ type: GENERATE_TABLE, tableVars });
 export const addRow = nums => ({ type: ADD_ROW, nums });
 export const removeRow = rowIndex => ({ type: REMOVE_ROW, rowIndex });
 export const increase = uuid => ({ type: INCREASE, uuid });
@@ -40,44 +35,47 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case SET_ROWS:
-      return
+  case LOADING:
+    return {
+      ...state,
+      loading: true,
+      loaded: false,
+    };
 
-    case SET_COLUMNS:
-      return
+  case LOADED:
+    return {
+      ...state,
+      loading: false,
+      loaded: true,
+    };
 
-    case SET_NEAREST_COUNT:
-      return
+  case GENERATE_TABLE:
+    return {
+      ...state,
+      nearestCount: action.tableVars.nearestCount,
+      nums: tableGenerator(action.tableVars),
+    };
 
-    case START_LOADING:
-      return
+  case ADD_ROW:
+    return
 
-    case FINISH_LOADING:
-      return
+  case REMOVE_ROW:
+    return
 
-    case SET_NUMS:
-      return
+  case INCREASE:
+    return
 
-    case ADD_ROW:
-      return
+  case DECREASE:
+    return
 
-    case REMOVE_ROW:
-      return
+  case SHOW_PERCENTAGE:
+    return
 
-    case INCREASE:
-      return
+  case SHOW_NEAREST:
+    return
 
-    case DECREASE:
-      return
-
-    case SHOW_PERCENTAGE:
-      return
-
-    case SHOW_NEAREST:
-      return
-
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

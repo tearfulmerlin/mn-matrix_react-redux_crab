@@ -1,5 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const MatrixTable = () => {}
+const MatrixTable = ({ nums }) => (
+  nums.map(row => <li>{row[0].value}, {row[0].uuid}</li>)
+);
 
-export default MatrixTable;
+const mapStateToProps = state => ({
+  nums: state.nums,
+});
+
+export default connect(mapStateToProps, null)(MatrixTable);
