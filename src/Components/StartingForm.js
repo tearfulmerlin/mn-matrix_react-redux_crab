@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Actions from '../Strore/store';
 
 const StartingForm = ({ generateTable, loading, loaded }) => {
@@ -92,3 +93,9 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(StartingForm);
+
+StartingForm.propTypes = {
+  generateTable: PropTypes.func.isRequired,
+  loading: PropTypes.func.isRequired,
+  loaded: PropTypes.func.isRequired,
+};

@@ -5,7 +5,7 @@ import TableHead from './TableHead';
 import TableFooter from './TableFooter';
 import TableBody from './TableBody';
 
-const MatrixTable = ({ nums }) => (
+const MatrixTable = () => (
   <div className="table-container">
     <div className="table-wrapper">
       <table className="table">
@@ -17,8 +17,4 @@ const MatrixTable = ({ nums }) => (
   </div>
 );
 
-const mapStateToProps = state => ({
-  nums: state.nums,
-});
-
-export default connect(mapStateToProps, null)(MatrixTable);
+export default MatrixTable;

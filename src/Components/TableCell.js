@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Actions from '../Strore/store';
 
 const TableCell = ({ cell, increase, decrease, rowSum }) => {
@@ -20,11 +21,8 @@ const TableCell = ({ cell, increase, decrease, rowSum }) => {
         </span>
 
         <div className="table__cell-percentage" >
+          <div className="chart" style={{ height: `${percentageValue}%` }} />
           {`${percentageValue}%`}
-          <div className="chart" style={{
-              height: `${percentageValue}%`
-          }}></div>
-
         </div>
 
       </div>
@@ -38,3 +36,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(TableCell);
+
+TableCell.propTypes = {
+  cell: PropTypes.shape({
+    value: PropTypes.number.isRequired,
+    uuid: PropTypes.string.isRequired,
+  }).isRequired,
+  increase: PropTypes.func.isRequired,
+  decrease: PropTypes.func.isRequired,
+  rowSum: PropTypes.number.isRequired,
+};

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Actions from '../Strore/store';
-import TableRow from './TableRow'
+import TableRow from './TableRow';
 
 const TableBody = ({ nums, addRow }) => (
   <tbody>
@@ -34,3 +35,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableBody);
+
+TableBody.propTypes = {
+  nums: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.object)
+  ).isRequired,
+  addRow: PropTypes.bool.isRequired,
+};

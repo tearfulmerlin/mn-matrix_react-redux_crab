@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './Styles/App.scss';
-
 import Spinner from './Components/Spinner';
 import MatrixTable from './Components/MatrixTable';
 import StartingForm from './Components/StartingForm';
@@ -29,3 +29,10 @@ const mapStateToPrors = state => ({
 
 export default connect(mapStateToPrors, null)(App);
 
+App.propTypes = {
+  nums: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.object)
+  ).isRequired,
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+};
