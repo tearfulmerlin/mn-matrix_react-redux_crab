@@ -30,13 +30,11 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (formState.rowCount
-      && formState.columnCount
-      && formState.nearestCount) {
-        loading();
-        generateTable(formState);
-        setTimeout(loaded, 2000);
-      }
+    if (formState.rowCount && formState.columnCount && formState.nearestCount) {
+      loading();
+      generateTable(formState);
+      setTimeout(loaded, 1000);
+    }
   };
 
   return (

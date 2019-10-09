@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import calcAverage from '../functions/calculators/calc-average';
 
 const TableFooter = ({ nums }) => (
@@ -20,3 +20,9 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(TableFooter);
+
+TableFooter.propTypes = {
+  nums: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.object)
+  ).isRequired,
+};

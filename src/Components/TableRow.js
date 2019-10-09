@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Actions from '../Strore/store';
 import calcSum from '../functions/calculators/calc-sum';
 import TableCell from './TableCell';
@@ -14,9 +15,7 @@ const TableRow = ({
   const rowSum = calcSum(row);
 
   return (
-    <tr className={
-      rowIndex === percentageRow && 'table__row--show-percentage'
-    }>
+    <tr className={rowIndex === percentageRow && 'table__row--show-percentage'}>
       <td className="table__row-name" onClick={() => removeRow(rowIndex)}>
         <span className="table__row-title">Row {rowIndex + 1}</span>
         <span className="table__row-action">Remove row</span>
@@ -50,3 +49,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableRow);
+
+TableRow.propTypes = {
+  row: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rowIndex: PropTypes.number.isRequired,
+  removeRow: PropTypes.func.isRequired,
+  percentageRow: PropTypes.number.isRequired,
+  setPercentageRow: PropTypes.func.isRequired,
+};
