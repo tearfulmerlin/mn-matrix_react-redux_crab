@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mn-matrix_react-redux/static/css/main.525bf084.chunk.css",
-    "main.js": "/mn-matrix_react-redux/static/js/main.c6737a61.chunk.js",
-    "main.js.map": "/mn-matrix_react-redux/static/js/main.c6737a61.chunk.js.map",
-    "runtime-main.js": "/mn-matrix_react-redux/static/js/runtime-main.f9f951d7.js",
-    "runtime-main.js.map": "/mn-matrix_react-redux/static/js/runtime-main.f9f951d7.js.map",
-    "static/js/2.687e69b7.chunk.js": "/mn-matrix_react-redux/static/js/2.687e69b7.chunk.js",
-    "static/js/2.687e69b7.chunk.js.map": "/mn-matrix_react-redux/static/js/2.687e69b7.chunk.js.map",
-    "index.html": "/mn-matrix_react-redux/index.html",
-    "precache-manifest.269aa65f65fedbbd49316123dae62bae.js": "/mn-matrix_react-redux/precache-manifest.269aa65f65fedbbd49316123dae62bae.js",
-    "service-worker.js": "/mn-matrix_react-redux/service-worker.js",
-    "static/css/main.525bf084.chunk.css.map": "/mn-matrix_react-redux/static/css/main.525bf084.chunk.css.map"
+    "main.css": "/mn-matrix_react-redux_crab/static/css/main.525bf084.chunk.css",
+    "main.js": "/mn-matrix_react-redux_crab/static/js/main.c6737a61.chunk.js",
+    "main.js.map": "/mn-matrix_react-redux_crab/static/js/main.c6737a61.chunk.js.map",
+    "runtime-main.js": "/mn-matrix_react-redux_crab/static/js/runtime-main.904fb513.js",
+    "runtime-main.js.map": "/mn-matrix_react-redux_crab/static/js/runtime-main.904fb513.js.map",
+    "static/js/2.687e69b7.chunk.js": "/mn-matrix_react-redux_crab/static/js/2.687e69b7.chunk.js",
+    "static/js/2.687e69b7.chunk.js.map": "/mn-matrix_react-redux_crab/static/js/2.687e69b7.chunk.js.map",
+    "index.html": "/mn-matrix_react-redux_crab/index.html",
+    "precache-manifest.b9714f5ef6fe797704bb1cd626987ef3.js": "/mn-matrix_react-redux_crab/precache-manifest.b9714f5ef6fe797704bb1cd626987ef3.js",
+    "service-worker.js": "/mn-matrix_react-redux_crab/service-worker.js",
+    "static/css/main.525bf084.chunk.css.map": "/mn-matrix_react-redux_crab/static/css/main.525bf084.chunk.css.map"
   }
 }
