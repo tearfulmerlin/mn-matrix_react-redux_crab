@@ -11,7 +11,7 @@ const ADD_ROW = 'ADD_ROW';
 const REMOVE_ROW = 'REMOVE_ROW';
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
-const SHOW_PERCENTAGE = 'SHOW_PERCENTAGE';
+const SET_PERCENTAGE_ROW = 'SET_PERCENTAGE_ROW';
 const SHOW_NEAREST = 'SHOW_NEAREST';
 
 export const loading = () => ({ type: LOADING });
@@ -22,7 +22,7 @@ export const addRow = () => ({ type: ADD_ROW });
 export const removeRow = rowIndex => ({ type: REMOVE_ROW, rowIndex });
 export const increase = uuid => ({ type: INCREASE, uuid });
 export const decrease = uuid => ({ type: DECREASE, uuid });
-export const showPercentage = rowIndex => ({ type: SHOW_PERCENTAGE, rowIndex });
+export const setPercentageRow = rowIndex => ({ type: SET_PERCENTAGE_ROW, rowIndex });
 export const showNearest = uuid => ({ type: SHOW_NEAREST, uuid });
 
 const initialState = {
@@ -32,6 +32,7 @@ const initialState = {
   nums: [],
   startLoading: false,
   finishLoading: false,
+  percentageRow: null,
 };
 
 const reducer = (state, action) => {
@@ -92,8 +93,11 @@ const reducer = (state, action) => {
         )),
     };
 
-  case SHOW_PERCENTAGE:
-    return
+  case SET_PERCENTAGE_ROW:
+    return {
+      ...state,
+      percentageRow: action.rowIndex,
+    };
 
   case SHOW_NEAREST:
     return
