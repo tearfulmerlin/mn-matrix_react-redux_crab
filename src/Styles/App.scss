@@ -113,4 +113,22 @@
     cursor: pointer;
   }
 
+  &__row-name {
+    width: 100px;
+  }
+
+  &__row-name:hover {
+    background-color: rgb(168, 88, 88);
+    color: #fff;
+  }
+
+  &__row-name:hover &__row-title,
+  &__row-name &__row-action {
+    display: none;
+  }
+
+  &__row-name &__row-title,
+  &__row-name:hover &__row-action {
+    display: inline-block;
+  }
 }

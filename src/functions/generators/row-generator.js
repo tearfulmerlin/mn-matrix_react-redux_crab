@@ -8,6 +8,6 @@ const rowGenerator = columnCount => {
   }
 
   return row;
-}
+};
 
 export default rowGenerator;
