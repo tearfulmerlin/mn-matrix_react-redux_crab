@@ -51,4 +51,5 @@ TableCell.propTypes = {
   increase: PropTypes.func.isRequired,
   decrease: PropTypes.func.isRequired,
   rowSum: PropTypes.number.isRequired,
+  setNearestCells: PropTypes.func.isRequired,
 };
