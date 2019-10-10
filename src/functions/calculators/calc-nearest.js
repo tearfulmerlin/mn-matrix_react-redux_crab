@@ -9,16 +9,6 @@ const calcNearestNums = (nums, nearestCount, currentCell) => {
       );
   }
 
-  // console.log(
-  //   nums
-  // );
-  // console.log(
-  //   currentCell
-  // );
-  // console.log(
-  //   nearestCount
-  // );
-
   const nearestValues = nums
     .map(row => row
       .map(cell => ({
