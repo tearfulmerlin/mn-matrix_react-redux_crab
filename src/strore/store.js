@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 import tableGenerator from '../functions/generators/table-generator';
 import rowGenerator from '../functions/generators/row-generator';
+import calcNearestNums from '../functions/calculators/calc-nearest';
 
 const LOADING = 'LOADING';
 const LOADED = 'LOADED';
@@ -12,6 +13,7 @@ const REMOVE_ROW = 'REMOVE_ROW';
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
 const SET_PERCENTAGE_ROW = 'SET_PERCENTAGE_ROW';
+const SET_NEAREST_CELLS = 'SET_NEAREST_CELLS';
 
 export const loading = () => ({ type: LOADING });
 export const loaded = () => ({ type: LOADED });
@@ -22,11 +24,13 @@ export const removeRow = rowIndex => ({ type: REMOVE_ROW, rowIndex });
 export const increase = uuid => ({ type: INCREASE, uuid });
 export const decrease = uuid => ({ type: DECREASE, uuid });
 export const setPercentageRow = rowIndex => ({ type: SET_PERCENTAGE_ROW, rowIndex });
+export const setNearestCells = cell => ({ type: SET_NEAREST_CELLS, cell });
 
 const initialState = {
   rowCount: null,
   columnCount: null,
   nearestCount: null,
+  nearestCells: [],
   nums: [],
   startLoading: false,
   finishLoading: false,
@@ -95,6 +99,12 @@ const reducer = (state, action) => {
     return {
       ...state,
       percentageRow: action.rowIndex,
+    };
+
+  case SET_NEAREST_CELLS:
+    return {
+      ...state,
+      nearestCells: calcNearestNums(state.nums, state.nearestCount, action.cell),
     };
 
   default:
