@@ -104,7 +104,7 @@ const reducer = (state, action) => {
   case SET_NEAREST_CELLS:
     return {
       ...state,
-      nearestCells: calcNearestNums(state.nums, state.nearestCount, action.cell),
+      nums: calcNearestNums(state.nums, state.nearestCount, action.cell),
     };
 
   default:

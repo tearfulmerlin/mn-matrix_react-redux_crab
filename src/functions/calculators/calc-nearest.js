@@ -1,23 +1,45 @@
-const calcNearestNums = (nums, currentCell, nearestCount) => {
-  if (nearestCount === null) {
-    return nums;
+const calcNearestNums = (nums, nearestCount, currentCell) => {
+  if (currentCell === null) {
+    return nums
+      .map(row => row
+        .map(cell => cell.nearest === true
+          ? { ...cell, nearest: false }
+          : cell
+        )
+      );
   }
 
-  const numsWithDiff = [];
+  // console.log(
+  //   nums
+  // );
+  // console.log(
+  //   currentCell
+  // );
+  // console.log(
+  //   nearestCount
+  // );
 
-  for (let i = 0; i< nums.length; i++) {
-    numsWithDiff.push(...nums[i]
-      .map(cell => ({ ...cell, diff: Math.abs(cell.value - currentCell.value)}))
-    );
-  }
-
-  const sorted = numsWithDiff
+  const nearestValues = nums
+    .map(row => row
+      .map(cell => ({
+        ...cell,
+        diff: Math.abs(cell.value - currentCell.value),
+      }))
+    )
+    .flat()
     .sort((a, b) => a.diff - b.diff)
-    .filter(el => el.uuid !== currentCell.uuid);
+    .filter(cell => cell.uuid !== currentCell.uuid)
+    .map(cell => cell.value)
 
-  sorted.length = nearestCount;
+    nearestValues.length = nearestCount;
 
-  return sorted;
+  return nums
+    .map(row => row
+      .map(cell => nearestValues.indexOf(cell.value) >= 0
+        ? { ...cell, nearest: true }
+        : cell
+      )
+    );
 };
 
 export default calcNearestNums;

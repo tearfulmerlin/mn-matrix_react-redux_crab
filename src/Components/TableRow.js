@@ -15,7 +15,11 @@ const TableRow = ({
   const rowSum = calcSum(row);
 
   return (
-    <tr className={rowIndex === percentageRow && 'table__row--show-percentage'}>
+    <tr className={
+      rowIndex === percentageRow
+        ? 'table__row--show-percentage'
+      : undefined
+    }>
       <td className="table__row-name" onClick={() => removeRow(rowIndex)}>
         <span className="table__row-title">Row {rowIndex + 1}</span>
         <span className="table__row-action">Remove row</span>
@@ -28,9 +32,7 @@ const TableRow = ({
         />
       ))}
       <td
-        onMouseOver={() => {
-          console.log('over', rowIndex);
-          setPercentageRow(rowIndex)}}
+        onMouseOver={() => setPercentageRow(rowIndex)}
         onMouseLeave={() => setPercentageRow(null)}
       >
         {rowSum}
@@ -54,6 +56,6 @@ TableRow.propTypes = {
   row: PropTypes.arrayOf(PropTypes.object).isRequired,
   rowIndex: PropTypes.number.isRequired,
   removeRow: PropTypes.func.isRequired,
-  percentageRow: PropTypes.number.isRequired,
+  percentageRow: PropTypes.number,
   setPercentageRow: PropTypes.func.isRequired,
 };

@@ -27,6 +27,6 @@ App.propTypes = {
   nums: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.object)
   ).isRequired,
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
+  loaded: PropTypes.bool,
 };

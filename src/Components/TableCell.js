@@ -3,21 +3,24 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Actions from '../Strore/store';
 
-const TableCell = ({ cell, increase, decrease, nearestCells,setNearestCells, rowSum }) => {
+const TableCell = ({ cell, increase, decrease, setNearestCells, rowSum }) => {
   const percentageValue = Math.round(cell.value / rowSum * 10000) / 100;
 
   return (
     <td
-      // className={`table__cell ${nearestCells.indexOf(cell.value)}`}
+      className={`table__cell ${cell.nearest ? 'nearest': ''} `}
       onClick={() => increase(cell.uuid)}
       onContextMenu={(event) => {
         event.preventDefault();
         decrease(cell.uuid);
       }}
-      onMouseOver={() => increase(cell.uuid)}
-      onMouseLeave={() => increase(cell.uuid)}
+
     >
-      <div className="table__cell-container">
+      <div
+        className="table__cell-container"
+        onMouseOver={() => setNearestCells(cell)}
+        onMouseLeave={() => setNearestCells(null)}
+      >
         <span className="table__cell-absolut">
           {cell.value}
         </span>
@@ -32,17 +35,13 @@ const TableCell = ({ cell, increase, decrease, nearestCells,setNearestCells, row
   );
 };
 
-const mapStateToProps = state => ({
-  nearestCells: state.nearestCells,
-});
-
 const mapDispatchToProps = dispatch => ({
   increase: uuid => dispatch(Actions.increase(uuid)),
   decrease: uuid => dispatch(Actions.decrease(uuid)),
   setNearestCells: cell => dispatch(Actions.setNearestCells(cell)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableCell);
+export default connect(null, mapDispatchToProps)(TableCell);
 
 TableCell.propTypes = {
   cell: PropTypes.shape({
