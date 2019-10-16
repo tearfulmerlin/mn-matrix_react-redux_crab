@@ -48,7 +48,7 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
         <input
           type="number"
           min="1"
-          max="10"
+          max="1000"
           placeholder="Rows"
           value={formState.rowCount}
           onChange={setRowCount}
@@ -60,7 +60,7 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
         <input
           type="number"
           min="1"
-          max="5"
+          max="1000"
           placeholder="Columns"
           value={formState.columnCount}
           onChange={setColumnCount}
@@ -72,7 +72,7 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
         <input
           type="number"
           min="1"
-          max="5"
+          max="1000"
           placeholder="Highlighted cells"
           value={formState.nearestCount}
           onChange={setNearestCount}
