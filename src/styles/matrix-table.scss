@@ -1,0 +1,137 @@
+.table-container {
+  display: block;
+  text-align: center;
+}
+
+.table-wrapper {
+  display: inline-block;
+  overflow: scroll;
+  max-height: 80vh;
+  max-width: 95vw;
+  text-align: center;
+
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 5px 5px 10px 0 rgba(0,0,0,0.48);
+
+  &::-webkit-scrollbar { width: 5px; height: 7px;}
+  &::-webkit-scrollbar-button {  background-color: #666; }
+  &::-webkit-scrollbar-track {  background-color: #999;}
+  &::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+  &::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 4px;}
+  &::-webkit-scrollbar-corner { background-color: #999;}
+  &::-webkit-resizer { background-color: #666;}
+}
+
+.table {
+  margin-right: 1px;
+  color: #333;
+  border-collapse: collapse;
+
+  thead th {
+    position: sticky;
+    top: 0;
+    padding: 0.75em;
+    color: #ddd;
+    border: 1px solid #ddd;
+    background-color: #333;
+  }
+
+  tfoot td {
+    position: sticky;
+    bottom: 0;
+    padding: 0.75em;
+
+    color: #ddd;
+    border: 1px solid #ddd;
+    background-color: #333;
+  }
+
+  th,
+  td:not(&__add-row) {
+    border: 1px solid #aaa;
+  }
+
+  tbody td {
+    cursor: pointer;
+  }
+
+  &__cell:hover {
+    background-color: rgb(190, 230, 162);
+  }
+
+  &__row-name {
+    width: 100px;
+  }
+
+  &__row-name:hover {
+    background-color: rgb(168, 88, 88);
+    color: #fff;
+  }
+
+  &__row-name:hover &__row-title,
+  &__row-name &__row-action {
+    display: none;
+  }
+
+  &__row-name &__row-title,
+  &__row-name:hover &__row-action {
+    display: inline-block;
+  }
+
+  &__add-row {
+    padding: 10px 0 0;
+    border: 0;
+  }
+
+  &__add-btn {
+    padding: 0.75em;
+    width: 100%;
+
+    color: #fff;
+    background-color: rgb(76, 138, 97);
+    border: 1px solid #4DB370;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  &__add-btn:hover {
+    color: #000;
+    background-color: rgb(162, 212, 179);
+  }
+
+  // styles for percentage view
+  &__cell-absolut,
+  &__row--show-percentage &__cell-percentage {
+    display: block;
+    padding: 0.75em;
+  }
+
+  &__row--show-percentage &__cell-absolut,
+  &__cell-percentage {
+    display: none;
+  }
+
+  &__row--show-percentage &__cell {
+    border-bottom: 1px solid rgb(36, 180, 31);
+  }
+
+  &__cell-percentage {
+    position: relative;
+  }
+
+  &__cell-percentage .chart {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+
+    background-color: rgba(36, 180, 31, 0.3);
+  }
+
+  &__cell.nearest{
+    background-color: rgb(228, 172, 120);
+  }
+}
