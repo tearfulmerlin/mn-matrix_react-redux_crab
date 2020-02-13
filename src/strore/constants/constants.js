@@ -1,0 +1,9 @@
+export const LOADING = 'LOADING';
+export const LOADED = 'LOADED';
+export const GENERATE_TABLE = 'GENERATE_TABLE';
+export const ADD_ROW = 'ADD_ROW';
+export const REMOVE_ROW = 'REMOVE_ROW';
+export const INCREASE = 'INCREASE';
+export const DECREASE = 'DECREASE';
+export const SET_PERCENTAGE_ROW = 'SET_PERCENTAGE_ROW';
+export const SET_NEAREST_CELLS = 'SET_NEAREST_CELLS';

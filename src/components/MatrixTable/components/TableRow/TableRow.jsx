@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as Actions from '../Strore/store';
-import calcSum from '../functions/calculators/calc-sum';
-import TableCell from './TableCell';
+import Actions from '../../../../strore/actions';
+import calcSum from '../../../../utils/calculators/calc-sum';
+import TableCell from '../TableCell';
 
 const TableRow = ({
   row,
@@ -18,22 +18,23 @@ const TableRow = ({
     <tr className={
       rowIndex === percentageRow
         ? 'table__row--show-percentage'
-      : undefined
-    }>
-      <td className="table__row-name" onClick={() => removeRow(rowIndex)}>
+        : undefined
+    }
+    >
+      <td className="table__row-name" onClick={ () => removeRow(rowIndex) }>
         <span className="table__row-title">Row {rowIndex + 1}</span>
         <span className="table__row-action">Remove row</span>
       </td>
       {row.map(cell => (
         <TableCell
-          cell={cell}
-          rowSum={rowSum}
-          key={cell.uuid}
+          cell={ cell }
+          rowSum={ rowSum }
+          key={ cell.uuid }
         />
       ))}
       <td
-        onMouseOver={() => setPercentageRow(rowIndex)}
-        onMouseLeave={() => setPercentageRow(null)}
+        onMouseOver={ () => setPercentageRow(rowIndex) }
+        onMouseLeave={ () => setPercentageRow(null) }
       >
         {rowSum}
       </td>
