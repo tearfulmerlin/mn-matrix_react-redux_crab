@@ -1,25 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import calcAverage from '../functions/calculators/calc-average';
+import calcAverage from '../../../../utils/calculators/calc-average';
 
 const TableFooter = ({ nums }) => (
   <tfoot>
     <tr>
       <td>Average</td>
       {nums[0].map((cell, cellIndex) => (
-        <td key={cellIndex}>{calcAverage(nums, cellIndex)}</td>
+        <td key={ cellIndex }>{calcAverage(nums, cellIndex)}</td>
       ))}
-      <td></td>
+      <td>{''}</td>
     </tr>
   </tfoot>
 );
 
-const mapStateToProps = state => ({
-  nums: state.nums,
-});
-
-export default connect(mapStateToProps, null)(TableFooter);
+export default TableFooter;
 
 TableFooter.propTypes = {
   nums: PropTypes.arrayOf(

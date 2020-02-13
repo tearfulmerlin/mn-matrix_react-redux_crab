@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as Actions from '../Strore/store';
+import Actions from '../../strore/actions';
 
 const StartingForm = ({ generateTable, loading, loaded }) => {
   const formInitialState = { rowCount: 5, columnCount: 3, nearestCount: 1 };
-  const [formState, setFormState] = useState(formInitialState);
+  const [ formState, setFormState ] = useState(formInitialState);
 
   const setRowCount = ({ target }) => {
-    setFormState(prevState => ({
-      ...prevState,
+    setFormState({
+      ...formState,
       rowCount: target.value,
-    }));
+    });
   };
 
   const setColumnCount = ({ target }) => {
-    setFormState(prevState => ({
-      ...prevState,
+    setFormState({
+      ...formState,
       columnCount: target.value,
-    }));
+    });
   };
 
   const setNearestCount = ({ target }) => {
-    setFormState(prevState => ({
-      ...prevState,
+    setFormState({
+      ...formState,
       nearestCount: target.value,
-    }));
+    });
   };
 
   const submitHandler = (event) => {
@@ -39,7 +39,7 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
 
   return (
     <form
-      onSubmit={submitHandler}
+      onSubmit={ submitHandler }
       className="starting-form"
     >
       <h2>Set number of table <br /> rows and columns</h2>
@@ -50,8 +50,8 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
           min="1"
           max="1000"
           placeholder="Rows"
-          value={formState.rowCount}
-          onChange={setRowCount}
+          value={ formState.rowCount }
+          onChange={ setRowCount }
         />
       </label>
 
@@ -62,20 +62,20 @@ const StartingForm = ({ generateTable, loading, loaded }) => {
           min="1"
           max="1000"
           placeholder="Columns"
-          value={formState.columnCount}
-          onChange={setColumnCount}
+          value={ formState.columnCount }
+          onChange={ setColumnCount }
         />
       </label>
 
       <label className="starting-form__label">
-        Highlighted cells
+        Cells to highlight
         <input
           type="number"
           min="1"
           max="1000"
           placeholder="Highlighted cells"
-          value={formState.nearestCount}
-          onChange={setNearestCount}
+          value={ formState.nearestCount }
+          onChange={ setNearestCount }
         />
       </label>
 

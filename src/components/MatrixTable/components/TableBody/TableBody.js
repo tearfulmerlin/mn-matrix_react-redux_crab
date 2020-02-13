@@ -1,14 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as Actions from '../Strore/store';
-import TableRow from './TableRow';
+import TableRow from '../TableRow/TableRow';
 
 const TableBody = ({ nums, addRow }) => (
   <tbody>
     {nums.map((row, rowIndex) => (
-      <React.Fragment key={rowIndex}>
-        <TableRow row={row} rowIndex={rowIndex} />
+      <React.Fragment key={ rowIndex }>
+        <TableRow row={ row } rowIndex={ rowIndex } />
       </React.Fragment>
     ))}
     <tr>
@@ -16,7 +14,7 @@ const TableBody = ({ nums, addRow }) => (
         <button
           type="button"
           className="table__add-btn"
-          onClick={addRow}
+          onClick={ addRow }
         >
           Add row
         </button>
@@ -26,15 +24,7 @@ const TableBody = ({ nums, addRow }) => (
 );
 
 
-const mapStateToProps = state => ({
-  nums: state.nums,
-});
-
-const mapDispatchToProps = dispatch => ({
-  addRow: () => dispatch(Actions.addRow()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TableBody);
+export default TableBody;
 
 TableBody.propTypes = {
   nums: PropTypes.arrayOf(
